@@ -3,6 +3,7 @@ description = Business is a premium Drupal 7 theme. Please consider a <a href="h
 core = 7.x
 engine = phptemplate
 stylesheets[all][] = style.css
+stylesheets[all][] = custom.css
 stylesheets[all][] = color/colors.css
 scripts[] = js/superfish.js
 scripts[] = js/supersubs.js

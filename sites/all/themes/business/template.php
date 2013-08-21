@@ -19,7 +19,7 @@ function business_breadcrumb($variables) {
     $output = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
     // comment below line to hide current page to breadcrumb
 	$breadcrumb[] = drupal_get_title();
-    $output .= '<nav class="breadcrumb">' . implode(' » ', $breadcrumb) . '</nav>';
+    $output .= '<nav class="breadcrumb">' . implode(' / ', $breadcrumb) . '</nav>';
     return $output;
   }
 }

@@ -241,7 +241,7 @@ html.js .js-hide {
  */
 .element-invisible.element-focusable:active,
 .element-invisible.element-focusable:focus {
-/*  position: static !important; */
+  position: static !important;
   clip: auto;
   overflow: visible;
   height: auto;

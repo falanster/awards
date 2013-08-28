@@ -133,7 +133,7 @@ function feeds_tamper_ui_form_feeds_ui_overview_form_alter(&$form, &$form_state)
  */
 function feeds_tamper_ui_form_feeds_ui_mapping_form_alter(&$form, &$form_state) {
   if (feeds_tamper_access($form['#importer'])) {
-    $form['help']['#markup'] .= l(t('Configure Feeds Tamper'), FEEDS_TAMPER_UI_BASE . '/list/' . $form['#importer']->id);
+    $form['help']['#markup'] .= l(t('Configure Feeds Tamper'), FEEDS_TAMPER_UI_BASE . '/list/' . $form['#importer']);
   }
 }
 

@@ -13,7 +13,7 @@
 #autocomplete {
   border: 1px solid;
   overflow: hidden;
-  position: relative; 
+  position: absolute; 
   z-index: 100;
 }
 #autocomplete ul {
@@ -228,7 +228,7 @@ html.js .js-hide {
  * "!important" is used to prevent unintentional overrides.
  */
 .element-invisible {
-  position: absolute !important; 
+  position: absolute !important;
   clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
   clip: rect(1px, 1px, 1px, 1px);
   overflow: hidden;

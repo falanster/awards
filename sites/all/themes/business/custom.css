@@ -14,4 +14,11 @@
 }
 
 #autocomplete {
+  left: 172px !important;
+  top: 257px !important;
+}
+
+.page-award #autocomplete {
+  left: 172px !important;
+  top: 236px !important;
 }

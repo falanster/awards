@@ -15,8 +15,8 @@
   overflow: hidden;
   position: absolute; 
   z-index: 100;
-  left: 300px;
-  top: -200px;
+  left: 300px !important;
+  top: 300px !important;
 } 
 #autocomplete ul {
   list-style: none;

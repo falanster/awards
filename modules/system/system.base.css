@@ -13,7 +13,7 @@
 #autocomplete {
   border: 1px solid;
   overflow: hidden;
-/*  position: absolute; */
+  position: absolute; 
   z-index: 100;
 } 
 #autocomplete ul {

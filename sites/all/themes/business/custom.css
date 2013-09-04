@@ -8,3 +8,6 @@
   padding: 1px 5px;
 } 
 
+#ui-datepicker-div {
+  width: 250px;
+}

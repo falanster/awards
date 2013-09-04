@@ -10,12 +10,12 @@
  * @see autocomplete.js
  */
 /* Suggestion list */
-/*#autocomplete {
+#autocomplete {
   border: 1px solid;
   overflow: hidden;
-  position: absolute; 
+/*  position: absolute; */
   z-index: 100;
-} */
+} 
 #autocomplete ul {
   list-style: none;
   list-style-image: none;

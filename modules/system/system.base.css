@@ -16,7 +16,7 @@
   position: relative; 
   z-index: 100;
   left: 300px;
-  top: 400px;
+  top: 0px;
 } 
 #autocomplete ul {
   list-style: none;

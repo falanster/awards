@@ -22,3 +22,19 @@
   left: 172px !important;
   top: 391px !important;
 }
+
+table,
+.view-single-award .view-display-id-attachment_2  table td,
+.view-single-award .view-display-id-attachment_3  table td,
+.view-single-award .view-display-id-attachment_4  table td  {
+  width: 50%;
+}
+
+.view-single-award .view-display-id-attachment_2 table {
+  margin-bottom: 0px;
+  border-bottom: none;
+}
+
+.view-single-award .view-display-id-attachment_3  table {
+  
+}

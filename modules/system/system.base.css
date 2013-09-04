@@ -13,16 +13,16 @@
 #autocomplete {
   border: 1px solid;
   overflow: hidden;
-  position: absolute; 
+  position: relative; 
   z-index: 100;
+  left: 300px;
+  top: 400px;
 } 
 #autocomplete ul {
   list-style: none;
   list-style-image: none;
   margin: 0;
   padding: 0;
-  left: 300px;
-  top: 400px;
 } 
 #autocomplete li {
   background: #fff;

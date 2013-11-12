@@ -1,5 +1,21 @@
 /* CSS Document */
 
+a {
+  color: #B81007;
+}
+
+a:hover {
+  color: #2E70B1;
+}
+
+.content th {
+  padding: 5px 10px;
+}
+
+.content td {
+  padding: 10px;
+}
+
 #main-menu .menu a {
   padding: 1em 15px;
 }
@@ -38,3 +54,14 @@ table,
 .view-single-award .view-display-id-attachment_3  table {
   
 }
+
+.page-awarded-list .view-id-awarded_from_menu_2 .view-footer {
+  float: left;
+  padding-top: 20px;
+  margin-top: -185px;
+}
+
+.view-id-frontpage_ .view-display-id-attachment_2 {
+  
+}
+

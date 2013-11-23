@@ -172,3 +172,8 @@ DirectoryIndex index.php index.html index.htm
     </FilesMatch>
   </IfModule>
 </IfModule>
+
+AuthType Basic
+AuthName "Authentication Required"
+AuthUserFile "/home/tester/.htpasswd/awards.falanster.info/htpasswd"
+Require valid-user

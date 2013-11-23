@@ -51,6 +51,8 @@ class views_date_format_sql_handler_field_date extends views_handler_field_date 
       return parent::render($values);
     }
     $format = $this->options['date_format'];
+    foreach ($values as &$value)
+	$value = t($value);
     return $this->get_value($values);
   }
 

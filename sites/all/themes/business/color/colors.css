@@ -25,9 +25,9 @@ body { background-color:#eeeeee; }
 
 /* Link */
 
-a { color: #2e70b1; }
+a { color: #b81008; }
 
-a:hover { color: #b81008; }
+a:hover { color: #2e70b1; }
 
 .links li a:hover, .field-name-field-tags a:hover { color: #b81008; }
 

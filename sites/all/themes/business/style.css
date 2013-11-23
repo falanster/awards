@@ -163,7 +163,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #2E70B1;
+  color: #B81007;
   -webkit-transition: color 0.2s ease-in-out;
   -moz-transition: color 0.2s ease-in-out;
   -o-transition: color 0.2s ease-in-out;
@@ -173,7 +173,7 @@ a {
 
 a:hover {
   text-decoration: none;
-  color: #B81007;
+  color: #2E70B1;
 }
 
 p {

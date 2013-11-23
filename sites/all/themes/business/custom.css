@@ -65,3 +65,23 @@ table,
   
 }
 
+/* Views date filter */
+
+.views-exposed-form .views-widget-filter-date_filter {
+  clear: left;
+}
+
+#edit-submit-awarded-from-menu-2 {
+	margin-top: 3.6em;
+}
+
+#edit-date-filter-min-wrapper, #edit-date-filter-max-wrapper {
+	float: left;
+}
+
+/* Button styles */
+
+.form-submit {
+  border-radius: 0px;
+  text-shadow: none;
+}

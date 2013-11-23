@@ -140,6 +140,14 @@ table {
   width: 100%;
 }
 
+#block-system-main table {
+  border-collapse:collapse;
+  border-spacing:0;
+  margin-bottom: 30px;
+  margin-left: 70px;
+  width: 100%;
+}
+
 th, tr, td {
   vertical-align: middle;
 }

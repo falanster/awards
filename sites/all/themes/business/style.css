@@ -140,11 +140,12 @@ table {
   width: 100%;
 }
 
-#block-system-main table {
+#block-system-main .view-frontpage- table {
   border-collapse:collapse;
   border-spacing:0;
   margin-bottom: 30px;
   margin-left: 70px;
+  margin-right: 70px;
   width: 100%;
 }
 

@@ -553,7 +553,8 @@ li.sfHover > a > .sf-sub-indicator {
 }
 
 .region-footer {
-  margin-bottom: 20px;
+  margin-top: 60px;
+  margin-left: 10px;
 }
 
 /*-------------------------------------------*

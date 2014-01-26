@@ -39,21 +39,47 @@ a:hover {
   top: 391px !important;
 }
 
-table,
-.view-single-award .view-display-id-attachment_2  table td,
-.view-single-award .view-display-id-attachment_3  table td,
-.view-single-award .view-display-id-attachment_4  table td  {
-  width: 50%;
+.view-content th,
+.view-content td { 
+    min-width: 130px; 
+    max-width: 460px; 
 }
+
+.view-single-award .ds-2col-stacked > .group-left {
+	width: 220px; 
+}
+
+.view-single-award .ds-2col-stacked > .group-right {
+	width: 700px;
+}
+
+.view-single-award .view-display-id-attachment_1 {
+	margin-bottom: 15px;
+}
+
+.view-single-award .view-display-id-attachment_1 table {
+	margin-bottom: 0;
+}
+
+.page-taxonomy-term .view-display-id-attachment_1 th,
+.page-taxonomy-term .view-display-id-attachment_1 td,
+.page-taxonomy-term .view-display-id-attachment_2 th,
+.page-taxonomy-term .view-display-id-attachment_2 td,
+.page-taxonomy-term .view-display-id-attachment_3 td, 
+.page-taxonomy-term .view-display-id-attachment_4 td {
+	width: 50%;
+}
+
+.taxonomy-term-description {
+	margin: -5px 0 20px;
+}
+
 
 .view-single-award .view-display-id-attachment_2 table {
   margin-bottom: 0px;
   border-bottom: none;
 }
 
-.view-single-award .view-display-id-attachment_3  table {
-  
-}
 
 .page-awarded-list .view-id-awarded_from_menu_2 .view-footer {
   float: left;
@@ -61,18 +87,39 @@ table,
   margin-top: -185px;
 }
 
-.view-id-frontpage_ .view-display-id-attachment_2 {
-  
+.one-third {
+	width: 33.3%;
+}
+
+.one-third .views-field-name {
+	text-align: center;
+}
+
+.one-third .views-field-field-pics .field-content {
+	text-align: center;
+	width: 100%;
+}
+
+.view-id-frontpage_ .view-display-id-attachment_2,
+.view-id-frontpage_ .view-display-id-attachment_4 {
+  display: inline-block;
+}
+
+.view-id-single_award .view-display-id-attachment_5,
+.view-id-single_award .view-display-id-attachment_6 {
+  display: inline-block;
+}
+
+.view-uznaga .views-submit-button,
+.view-awarded-from-menu-2 .views-submit-button,
+.view-opendata .views-submit-button {
+	padding-top: 1.9em;
 }
 
 /* Views date filter */
 
 .views-exposed-form .views-widget-filter-date_filter {
   clear: left;
-}
-
-#edit-submit-awarded-from-menu-2 {
-	margin-top: 3.6em;
 }
 
 #edit-date-filter-min-wrapper, #edit-date-filter-max-wrapper {

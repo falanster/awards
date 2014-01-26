@@ -141,11 +141,9 @@ table {
 }
 
 #block-system-main .view-frontpage- table {
-  border-collapse:collapse;
-  border-spacing:0;
-  margin-bottom: 30px;
-  margin-left: 70px;
-  width: 70%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 15px;
 }
 
 th, tr, td {

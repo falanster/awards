@@ -29,7 +29,7 @@ a:hover {
   z-index: 100 !important;
 }
 
-#autocomplete {
+#autocomplete div {
   position: relative;
   z-index:999;
   left: 10px !important;

@@ -28,17 +28,12 @@ a:hover {
   width: 250px;
   z-index: 100 !important;
 }
-
-#autocomplete {
-  left: 172px !important;
-  top: 411px !important;
-}
-
+/*
 .page-award #autocomplete {
   left: 172px !important;
   top: 391px !important;
 }
-
+*/
 .view-content th,
 .view-content td { 
     min-width: 130px; 

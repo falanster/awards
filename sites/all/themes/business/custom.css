@@ -29,11 +29,11 @@ a:hover {
   z-index: 100 !important;
 }
 
-#autocomplete div {
-  position: relative;
-  z-index:999;
+#autocomplete ul {
   left: 10px !important;
   top: 40px !important;
+  position: relative;
+  z-index:999;
 }
 /*
 .page-award #autocomplete {

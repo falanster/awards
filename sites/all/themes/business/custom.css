@@ -31,8 +31,9 @@ a:hover {
 
 #autocomplete {
   position: relative;
+  z-index:999;
   left: 10px !important;
-  top: 50px !important;
+  top: 40px !important;
 }
 /*
 .page-award #autocomplete {

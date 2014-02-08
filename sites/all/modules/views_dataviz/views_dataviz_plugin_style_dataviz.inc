@@ -19,6 +19,10 @@ class views_dataviz_plugin_style_dataviz extends views_plugin_style {
     $options['_pieSliceText'] = array('default' => 'value');
     $options['_width'] = array('default' => '');
     $options['_height'] = array('default' => '');
+    $options['chart_area_width'] = array('default' => '80%');
+    $options['chart_area_height'] = array('default' => 'auto');
+    $options['chart_area_left'] = array('default' => 90);
+    $options['chart_area_top'] = array('default' => 50);
     $options['colors'] = array('default' => '');
     $options['_enableInteractivity'] = array('default' => 1);
 
@@ -70,7 +74,7 @@ class views_dataviz_plugin_style_dataviz extends views_plugin_style {
     $form['_width'] = array(
       '#type' => 'textfield',
       '#title' => t('Width'),
-      '#description' => t('Chart width in pixels. Leave blank for auto width.'),
+      '#description' => t('Chart container width in pixels. Leave blank for auto width.'),
       '#size' => 8,
       '#required' => FALSE,
       '#default_value' => $this->options['_width'],
@@ -78,10 +82,42 @@ class views_dataviz_plugin_style_dataviz extends views_plugin_style {
     $form['_height'] = array(
       '#type' => 'textfield',
       '#title' => t('Height'),
-      '#description' => t('Chart height in pixels. Leave blank for auto height.'),
+      '#description' => t('Chart container height in pixels. Leave blank for auto height.'),
       '#size' => 8,
       '#required' => FALSE,
       '#default_value' => $this->options['_height'],
+    );
+    $form['chart_area_width'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Chart Area Width'),
+      '#description' => t('Width of the chart. Enter an integer, percentage, or auto.'),
+      '#size' => 8,
+      '#required' => FALSE,
+      '#default_value' => $this->options['chart_area_width'],
+    );
+    $form['chart_area_height'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Chart Area Height'),
+      '#description' => t('Height of the chart. Enter an integer, percentage, or auto.'),
+      '#size' => 8,
+      '#required' => FALSE,
+      '#default_value' => $this->options['chart_area_height'],
+    );
+    $form['chart_area_left'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Chart Area Left Margin'),
+      '#description' => t('Distance of chart area from left edge. Enter an integer, percentage, or auto.'),
+      '#size' => 8,
+      '#required' => FALSE,
+      '#default_value' => $this->options['chart_area_left'],
+    );
+    $form['chart_area_top'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Chart Area Top Margin'),
+      '#description' => t('Distance of chart area from top edge. Enter an integer, percentage, or auto.'),
+      '#size' => 8,
+      '#required' => FALSE,
+      '#default_value' => $this->options['chart_area_top'],
     );
     $form['colors'] = array(
       '#type' => 'textfield',
@@ -99,42 +135,35 @@ class views_dataviz_plugin_style_dataviz extends views_plugin_style {
   }
 
   function render() {
-    // For some reason render(); gets called twice, we can't allow that
-    global $views_dataviz_log;
-    if (empty($views_dataviz_log)) {
+    static $views_dataviz_log = -1;
+    if (!(++$views_dataviz_log)) {
+      // Add js only once.
       drupal_add_js('if (!Boolean(Drupal.settings.Dataviz)) { Drupal.settings.Dataviz = new Object(); } if (!Boolean(Drupal.settings.Dataviz.chart)) { Drupal.settings.Dataviz.chart = new Object();google.load("visualization", "1", {packages:["corechart", "gauge", "orgchart"]}); }', 'inline');
       drupal_add_js('https://www.google.com/jsapi', array('type' => 'external', 'weight' => JS_LIBRARY));
       drupal_add_js(drupal_get_path('module', 'views_dataviz') . '/js/dataviz-goo-chart.js');
     }
-    if (isset($views_dataviz_log[$this->display->vid][$this->display->id])) {
-      return;
-    }
-    $views_dataviz_log[$this->display->vid][$this->display->id] = TRUE;
-
-    $settings = $output = array();
+    $output = '';
+    $settings = array();
+    $settings = array();
     $options = $this->options;
-    $sets = $this->render_grouping($this->view->result, $this->options['grouping']);
+    $sets = func_get_args();
     $one = count($sets) == 1;
     $set = 0;
     $chartArea = new stdClass();
-    $chartArea->width = '100%';
-    $chartArea->left = 90;
-    $chartArea->right = 90;
-    $chartArea->top = 50;
-    // dsm($options);
+    $chartArea->width = $options['chart_area_width'];
+    $chartArea->height = $options['chart_area_height'];
+    $chartArea->left = $options['chart_area_left'];
+    $chartArea->top = $options['chart_area_top'];
 
     foreach ($sets as $title => $records) {
-      $chart_id = 'dataviz_ch' . $this->display->vid . '_'. $this->display->id . '_'. $set;
-      $output[] = '<div class="dataviz" id="' . $chart_id . '"></div>';
+      $chart_id = 'dataviz_ch' . $this->display->vid . '_'. $this->display->id . '_'. $views_dataviz_log . '_'. $set;
+      $output .= '<div class="dataviz" id="' . $chart_id . '"></div>';
       $settings['chart'][$chart_id] = array(
-        'header' => array(),
-        'rows' => array(array()),
-        'columns' => array('Sales'),
+        'data' => array(),
         'chartType' => $options['type'],
         'containerId' =>  $chart_id,
         'options' => array(
           'forceIFrame' => FALSE,
-          'titlePosition' => 'in',
           'chartArea' => $chartArea,
           'title' => $one ? $this->display->display_title : $title,
         ),
@@ -152,32 +181,39 @@ class views_dataviz_plugin_style_dataviz extends views_plugin_style {
         $settings['chart'][$chart_id]['options']['colors'] = $colors;
       }
 
+      $data = array();
+
+      end($this->view->field);
+      do {
+        $field = current($this->view->field);
+        $data[0][] = $field->options['label'];
+      } while(prev($this->view->field));
+
+      $header = @array_pop(array_keys($this->view->field));
       foreach ($records as $row_index => $row) {
         foreach ($this->view->field as $key => $field) {
           if (!$field->options['exclude']) {
-            $field_value = $field->advanced_render($row);
-            /**
-             * @todo JurriaanRoelofs
-             * This probably isn't the best way to determine data/header
-             */
-            if (is_numeric($field_value)) {
-              $settings['chart'][$chart_id]['rows'][0][] = $field_value ;
-            } else {
-              $settings['chart'][$chart_id]['header'][] = $field_value;
-            }
+            $value = strip_tags($field->advanced_render($row));
+            // Jumping through some hoops to push new values to the beginning of the
+            // array instead of to the end. Needed because in views we want values
+            // before labels but G Charts wants labels before values.
+            if (!isset($data[$row_index+1])) $data[$row_index+1] = array();
+            array_unshift($data[$row_index+1], ($key === $header) ? $value : floatVal($value)) ;
           }
         }
       }
 
+      $settings['chart'][$chart_id]['data'] = $data;
+
       // Allow modules to alter the chart based on views context.
-      drupal_alter('views_dataviz', $chart, $this->view->name, $this->display->id);
+      drupal_alter('views_dataviz', $settings['chart'][$chart_id], $this->view->name, $this->display->id);
 
       // Since view expects string output we can't save render array for later.
       $set++;
     }
 
-    $output[] = '<script>Drupal.settings.Dataviz.chart.' . $chart_id . ' = null;jQuery.extend(true, Drupal.settings.Dataviz, ' . json_encode($settings) . ');</script>';
+    $output .= '<script>Drupal.settings.Dataviz.chart.' . $chart_id . ' = null;jQuery.extend(true, Drupal.settings.Dataviz, ' . json_encode($settings) . ');</script>';
 
-    return implode($output);
+    return $output;
   }
 }

@@ -142,7 +142,3 @@ DirectoryIndex index.php index.html index.htm
   </IfModule>
 </IfModule>
 
-AuthType Basic
-AuthName "Authentication Required"
-AuthUserFile "/home/falanster.info/domains/awards.falanster.info/.htpasswd/awards"
-Require valid-user

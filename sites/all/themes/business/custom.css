@@ -127,3 +127,8 @@ a:hover {
   border-radius: 0px;
   text-shadow: none;
 }
+
+#block-block-1, #block-block-2 {
+	display: inline-block;
+	vertical-align: middle;
+}
